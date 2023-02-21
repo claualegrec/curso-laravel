@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ExpenseReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,12 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/test', function () {
-    return view('test', [
-        'title' => 'Welcome to Laravel'
-    ]);
-});
+Route::get('/dashboard', [DashboardController::class, 'index']);
+
+Route::resource('/expense_reports', ExpenseReportController::class);
